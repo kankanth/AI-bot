@@ -20,7 +20,7 @@ tree = app_commands.CommandTree(client)  # Create the command tree
 
 @client.event
 async def on_ready():
-    print(f'✅ Logged in as {client.user}')
+    print(f' Logged in as {client.user}')
     try:
         synced = await tree.sync()
         print(f"Synced {len(synced)} command(s)")
@@ -35,13 +35,13 @@ async def join(interaction: discord.Interaction):
     if voice_state and voice_state.channel:
         try:
             await interaction.response.send_message(
-                f"🎧 เข้าห้อง: {voice_state.channel.name}", ephemeral=True)
+                f" เข้าห้อง: {voice_state.channel.name}", ephemeral=True)
             await voice_state.channel.connect()
         except Exception as e:
-            await interaction.followup.send(f"❌ เข้าห้องไม่สำเร็จ: {str(e)}")
+            await interaction.followup.send(f" เข้าห้องไม่สำเร็จ: {str(e)}")
     else:
         await interaction.response.send_message(
-            "❌ คุณต้องอยู่ใน voice channel ก่อน", ephemeral=True)
+            " คุณต้องอยู่ใน voice channel ก่อน", ephemeral=True)
 
 
 @client.event
@@ -71,7 +71,7 @@ async def on_message(message):
         print(f"[📩] รับข้อความจาก {message.author}: {prompt}")
 
         if not prompt:
-            await message.channel.send("❌ กรุณาพิมพ์ข้อความหลัง `!ask`")
+            await message.channel.send(" กรุณาพิมพ์ข้อความหลัง `!ask`")
             return
 
         await message.channel.send(" บอทกำลังคิดคำตอบ...")
@@ -90,7 +90,7 @@ async def on_message(message):
                 await message.channel.send(" บอทไม่สามารถสร้างคำตอบได้")
 
         except Exception as e:
-            print(f"[❌] ERROR: {e}")
+            print(f"[] ERROR: {e}")
             await message.channel.send(f" เกิดข้อผิดพลาด: {str(e)}")
 # Start the Flask server in a separate thread
 server_on()
