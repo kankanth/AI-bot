@@ -56,7 +56,7 @@ async def on_voice_state_update(member, before, after):
         if bot_member and bot_member.is_connected():
             await bot_member.disconnect()
             print(
-                f"👋 บอทออกจากห้องเสียง {voice_channel.name} เพราะไม่มีใครอยู่แล้ว"
+                f"บอทออกจากห้องเสียง {voice_channel.name} เพราะไม่มีใครอยู่แล้ว"
             )
 
 
@@ -74,7 +74,7 @@ async def on_message(message):
             await message.channel.send("❌ กรุณาพิมพ์ข้อความหลัง `!ask`")
             return
 
-        await message.channel.send("🤖 บอทกำลังคิดคำตอบ...")
+        await message.channel.send(" บอทกำลังคิดคำตอบ...")
 
         try:
             await message.channel.typing()  # เพื่อให้รู้ว่ากำลังประมวลผล
@@ -87,11 +87,11 @@ async def on_message(message):
             if response.text:
                 await message.channel.send(response.text)
             else:
-                await message.channel.send("⚠️ บอทไม่สามารถสร้างคำตอบได้")
+                await message.channel.send(" บอทไม่สามารถสร้างคำตอบได้")
 
         except Exception as e:
             print(f"[❌] ERROR: {e}")
-            await message.channel.send(f"❌ เกิดข้อผิดพลาด: {str(e)}")
+            await message.channel.send(f" เกิดข้อผิดพลาด: {str(e)}")
 # Start the Flask server in a separate thread
 server_on()
 
